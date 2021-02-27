@@ -13,7 +13,8 @@ import { ApiService } from '../../services/api.service';
 })
 export class FilmsPage implements OnInit {
 
-  films: Observable<any>;  
+  films: Observable<any>; 
+  filterTerm: string; 
   constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {    
