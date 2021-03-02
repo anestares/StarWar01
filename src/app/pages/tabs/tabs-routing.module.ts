@@ -40,7 +40,11 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../planets/planets.module').then( m => m.PlanetsPageModule)
-          }
+          },
+          {
+            path: ':id',
+            loadChildren: () => import('../planet-details/planet-details.module').then( m =>m.PlanetDetailsPageModule)
+          } 
         ]
       }
     ]

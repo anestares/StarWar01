@@ -22,11 +22,10 @@ export class ApiService {
       return this.http.get(`https://swapi.dev/api/people/${id}`);
     }  
 
-/* 
-      getPlanets() {
+    getPlanets() {
         return this.http.get('https://swapi.dev/api/planets');
-        }
-        getPlanets(id) {
+    }
+    getPlanet(id) {
         return this.http.get(`https://swapi.dev/api/planets/${id}`);
-        } */
+        } 
 }

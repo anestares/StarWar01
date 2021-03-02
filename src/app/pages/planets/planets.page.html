@@ -1,9 +1,47 @@
+
 <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Planetas en Start Wars</ion-title>
+  </ion-toolbar>
   <ion-toolbar>
-    <ion-title>planets</ion-title>
+    <ion-title>Información</ion-title>
+    <ion-title size small slot="end">{{fecha_actual | date: 'dd/MM/yyyy HH:mm'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<h2>hola planets</h2>
-</ion-content>
+
+  <ion-item>
+    <ion-label>Tipo de Documento</ion-label>
+    <ion-checkbox [(ngModel)]="isdni" (ionChange)="updateestadodni()"></ion-checkbox>
+  </ion-item>
+  <ion-searchbar placeholder="Search ..." [(ngModel)]="idplaneta" (ionInput)="getPlanetData($event.target.value)" animated="true"></ion-searchbar>
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre" type="text" [value]="valorNombre"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Periodo Rotacional</ion-label>
+      <ion-input formControlName="rotation_period" type="email" [value]="valorPeriodoRotacional"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Periodo Orbital</ion-label>
+      <ion-input formControlName="orbital_period" [value]="valorPeriodoOrbital"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Diametro</ion-label>
+      <ion-input maxlength="10" formControlName="diameter" type="text" [value]="valorDiametro"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="danger" expand="block">Enviar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form> 
+ </ion-content>
+  
