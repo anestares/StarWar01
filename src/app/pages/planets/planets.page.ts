@@ -17,6 +17,7 @@ export class PlanetsPage implements OnInit {
   planets: Observable<any>;
   idPlaneta: number;
 
+  
   isSubmitted = false;
   isdni: boolean;
   fecha_actual= Date.now();
@@ -39,6 +40,26 @@ export class PlanetsPage implements OnInit {
     this.router.navigateByUrl(`/tabs/planets/${planetId}`);
   }
 
+  getFilmData(id){
+    this.api.getFilm(id).subscribe(res=>{
+      this.ionicForm.setValue({
+        nombre: res['title'],
+        rotation_period: res['episode_id'],
+        orbital_period: res['director'],
+        diameter: res['producer']
+      });
+    });
+  }
+  getPeopleData(id){
+    this.api.getPeople(id).subscribe(res=>{
+      this.ionicForm.setValue({
+        nombre: res['name'],
+        rotation_period: res['height'],
+        orbital_period: res['mass'],
+        diameter: res['hair_color']
+      });
+    });
+  }
   getPlanetData(id){
     this.api.getPlanet(id).subscribe(res=>{
       this.ionicForm.setValue({

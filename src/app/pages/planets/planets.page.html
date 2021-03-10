@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>Planetas en Start Wars</ion-title>
@@ -10,12 +9,56 @@
 </ion-header>
 
 <ion-content>
+<ion-item>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="value">
+      <ion-row>
+<!--       <ion-list-header>
+        <ion-label>Elija una opción</ion-label>
+      </ion-list-header> -->
+      <ion-col>
+        <ion-item>
+          <ion-label>Film</ion-label>
+          <ion-radio slot="start" value="film" ></ion-radio>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>People</ion-label>
+          <ion-radio slot="start" value="people"></ion-radio>
+        </ion-item>
+      </ion-col>
 
-  <ion-item>
+      <ion-col>
+        <ion-item>
+          <ion-label>Planet</ion-label>
+          <ion-radio slot="start" value="planet"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    </ion-radio-group>
+  </ion-list>
+</ion-item>
+
+<!-- <p>Valor: {{ value }} </p> -->
+
+<!--   <ion-item>
     <ion-label>Tipo de Documento</ion-label>
     <ion-checkbox [(ngModel)]="isdni" (ionChange)="updateestadodni()"></ion-checkbox>
-  </ion-item>
-  <ion-searchbar placeholder="Search ..." [(ngModel)]="idplaneta" (ionInput)="getPlanetData($event.target.value)" animated="true"></ion-searchbar>
+  </ion-item> -->
+
+  <div [ngSwitch]= "value">
+    <div *ngSwitchCase = "'film'">
+      <ion-searchbar placeholder="Search Film ..." [(ngModel)]="idfilm" (ionInput)="getFilmData($event.target.value)" animated="true"></ion-searchbar>
+    </div>
+    <div *ngSwitchCase = "'people'">
+      <ion-searchbar placeholder="Search People ..." [(ngModel)]="idpeople" (ionInput)="getPeopleData($event.target.value)" animated="true"></ion-searchbar>
+    </div>
+    <div *ngSwitchDefault>  <ion-searchbar placeholder="Search Planet ..." [(ngModel)]="idplaneta" (ionInput)="getPlanetData($event.target.value)" animated="true"></ion-searchbar>
+    </div>
+  </div>
+  
+
   <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
 
     <ion-item lines="full">
